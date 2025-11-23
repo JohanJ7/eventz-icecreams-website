@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>EventZ Ice Creams | Event Only Ice Cream Catering</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary: #ff7b54;
+      --primary-dark: #e35a30;
+      --accent: #ffd56f;
+      --bg-gradient: radial-gradient(circle at top left, #ffe5f2, #fff5e6 40%, #e3f6ff 80%);
+      --glass-bg: rgba(255, 255, 255, 0.18);
+      --glass-border: rgba(255, 255, 255, 0.6);
+      --text-main: #1f2933;
+      --text-muted: #6b7280;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.18);
+      --radius-xl: 24px;
+      --transition-fast: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-gradient);
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.6;
+    }
+
+    /* Background decorative blobs */
+    .bg-blur {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .bg-blur span {
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(60px);
+      opacity: 0.7;
+    }
+
+    .bg-blur .blob-1 {
+      width: 260px;
+      height: 260px;
+      background: #ffd1ea;
+      top: -40px;
+      left: -40px;
+    }
+
+    .bg-blur .blob-2 {
+      width: 320px;
+      height: 320px;
+      background: #ffe8b3;
+      bottom: -80px;
+      right: -40px;
+    }
+
+    .bg-blur .blob-3 {
+      width: 220px;
+      height: 220px;
+      background: #c7f5ff;
+      top: 30%;
+      right: 10%;
+    }
+
+    /* Layout */
+    .page {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 20px 16px 80px;
+    }
+
+    /* Glass card */
+    .glass {
+      background: var(--glass-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    /* Navbar */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 20px;
+      margin-bottom: 18px;
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-pill {
+      width: 40px;
+      height: 40px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, #ff9a8b, #fecf6a);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 10px 25px rgba(248, 113, 113, 0.4);
+    }
+
+    .brand-title {
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      font-size: 1.1rem;
+    }
+
+    .brand-sub {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-main);
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      background: rgba(255, 255, 255, 0.7);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(148, 163, 184, 0.4);
+    }
+
+    .nav-cta {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: #1f2933;
+      font-weight: 600;
+      box-shadow: 0 12px 30px rgba(248, 113, 113, 0.6);
+    }
+
+    /* Hero */
+    .hero {
+      margin-top: 14px;
+      padding: 26px 22px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 24px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.85);
+      font-size: 0.76rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .badge-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .hero span.highlight {
+      color: var(--primary-dark);
+    }
+
+    .hero-sub {
+      font-size: 0.98rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
+    }
+
+    .meta-pill {
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .dot-mini {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .dot-pink { background: #fb7185; }
+    .dot-gold { background: #facc15; }
+    .dot-blue { background: #38bdf8; }
+
+    .hero-cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-primary {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.92rem;
+      box-shadow: 0 14px 35px rgba(248, 113, 113, 0.6);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(248, 113, 113, 0.7);
+    }
+
+    .btn-ghost {
+      border-radius: 999px;
+      padding: 9px 14px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      background: rgba(255, 255, 255, 0.7);
+      font-size: 0.86rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .btn-ghost:hover {
+      background: #ffffff;
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(148, 163, 184, 0.5);
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .hero-card {
+      width: 100%;
+      max-width: 320px;
+      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .ice-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 999px;
+      margin: 0 auto 12px;
+      background: conic-gradient(from 210deg, #ff9a8b, #fecf6a, #f6d365, #ff9a8b);
+      padding: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.6rem;
+    }
+
+    .ice-inner {
+      width: 100%;
+      height: 100%;
+      border-radius: inherit;
+      background: radial-gradient(circle at 30% 30%, #fffaf0, #ffe4e6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+    }
+
+    .hero-card h3 {
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+
+    .hero-card p {
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .hero-tag-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      font-size: 0.75rem;
+    }
+
+    .hero-tag {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #4b5563;
+    }
+
+    .hero-badge {
+      position: absolute;
+      right: 10px;
+      top: 12px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 0.7rem;
+      background: rgba(15, 118, 110, 0.06);
+      color: #0f766e;
+      border: 1px solid rgba(34, 197, 165, 0.6);
+    }
+
+    /* Sections */
+    section {
+      margin-top: 26px;
+    }
+
+    .section-header {
+      margin-bottom: 12px;
+    }
+
+    .section-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.68rem;
+      color: var(--text-muted);
+      margin-bottom: 5px;
+    }
+
+    .section-title {
+      font-size: 1.1rem;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
+      gap: 18px;
+      padding: 18px;
+    }
+
+    .about-main {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .chip {
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      background: rgba(255, 255, 255, 0.9);
+      color: #4b5563;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 8px;
+      font-size: 0.82rem;
+    }
+
+    .stat-card {
+      padding: 10px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-bottom: 2px;
+    }
+
+    .stat-value {
+      font-weight: 700;
+      font-size: 0.96rem;
+    }
+
+    /* Flavors */
+    .flavors-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      padding: 16px;
+    }
+
+    .flavor-card {
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.9);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 0.8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .flavor-pill {
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+
+    .flavor-tagline {
+      color: var(--text-muted);
+    }
+
+    .flavor-badge {
+      font-size: 0.7rem;
+      align-self: flex-start;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(248, 250, 252, 0.9);
+      border: 1px solid rgba(203, 213, 225, 0.9);
+    }
+
+    /* Booking */
+    .booking-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 20px;
+      padding: 18px;
+    }
+
+    form {
+      display: grid;
+      gap: 10px;
+      font-size: 0.85rem;
+    }
+
+    label {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(255, 255, 255, 0.9);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.4);
+      background: #ffffff;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .note-small {
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .booking-highlight {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .slots {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.76rem;
+      margin-bottom: 10px;
+    }
+
+    .slot-pill {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #4b5563;
+    }
+
+    .whatsapp-card {
+      margin-top: 10px;
+      padding: 9px 10px;
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.06);
+      border: 1px dashed rgba(34, 197, 94, 0.6);
+      font-size: 0.8rem;
+      color: #0f766e;
+    }
+
+    /* Floating CTA */
+    .floating-cta {
+      position: fixed;
+      right: 14px;
+      bottom: 14px;
+      z-index: 30;
+    }
+
+    .floating-cta button {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 10px 16px;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #ecfdf3;
+      font-size: 0.86rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 16px 40px rgba(22, 163, 74, 0.7);
+    }
+
+    .floating-cta small {
+      font-size: 0.7rem;
+      opacity: 0.85;
+    }
+
+    /* Footer */
+    footer {
+      margin-top: 26px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    /* Animations */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive */
+    @media (max-width: 840px) {
+      .hero,
+      .about-grid,
+      .booking-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding: 18px 16px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .nav {
+        padding-inline: 14px;
+      }
+
+      .nav-links {
+        gap: 10px;
+        font-size: 0.78rem;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .page {
+        padding-inline: 12px;
+      }
+
+      .nav {
+        padding-inline: 10px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .flavors-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .hero-card {
+        max-width: 260px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .flavors-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .floating-cta button {
+        padding-inline: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-blur">
+    <span class="blob-1"></span>
+    <span class="blob-2"></span>
+    <span class="blob-3"></span>
+  </div>
+
+  <div class="page">
+    <!-- NAV -->
+    <header class="nav glass fade-in">
+      <div class="nav-left">
+        <div class="logo-pill">EZ</div>
+        <div>
+          <div class="brand-title">EventZ Ice Creams</div>
+          <div class="brand-sub">Ice creams only for events</div>
+        </div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#flavors">Flavors</a>
+        <a href="#booking" class="nav-cta">Book an event</a>
+      </nav>
+    </header>
+
+    <!-- HERO -->
+    <main class="hero glass fade-in">
+      <div>
+        <div class="badge">
+          <span class="badge-dot"></span>
+          <span>Now booking 2025–26 events</span>
+        </div>
+        <h1>
+          The event‑only <span class="highlight">ice cream bar</span> your guests remember.
+        </h1>
+        <p class="hero-sub">
+          EventZ Ice Creams brings a live, premium ice cream experience to weddings, birthdays,
+          corporates and school events — freshly churned, perfectly plated, and totally hassle‑free.
+        </p>
+
+        <div class="hero-meta">
+          <div class="meta-pill">
+            <span class="dot-mini dot-pink"></span>
+            <span>Minimum 50 guests</span>
+          </div>
+          <div class="meta-pill">
+            <span class="dot-mini dot-gold"></span>
+            <span>Custom menus per event</span>
+          </div>
+          <div class="meta-pill">
+            <span class="dot-mini dot-blue"></span>
+            <span>Serving Thoothukudi & nearby</span>
+          </div>
+        </div>
+
+        <div class="hero-cta-row">
+          <button class="btn-primary" onclick="scrollToBooking()">
+            Check date & get quote
+          </button>
+          <button class="btn-ghost" onclick="scrollToFlavors()">
+            View event flavors →
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-right">
+        <div class="hero-card glass">
+          <div class="hero-badge">Event‑only ice cream catering</div>
+          <div class="ice-circle">
+            <div class="ice-inner">🍦</div>
+          </div>
+          <h3>Live scooping at your venue</h3>
+          <p>
+            We arrive with freezers, toppings, staff & smiles — you just confirm the date and guest count.
+          </p>
+          <div class="hero-tag-row">
+            <span class="hero-tag">Weddings</span>
+            <span class="hero-tag">Birthdays</span>
+            <span class="hero-tag">Corporate</span>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade-in">
+      <div class="section-header">
+        <div class="section-eyebrow">Why EventZ</div>
+        <h2 class="section-title">Designed only for events — not walk‑in shop.</h2>
+      </div>
+
+      <div class="about-grid glass">
+        <div class="about-main">
+          <p>
+            EventZ Ice Creams focuses only on events, so the entire setup, menu and service
+            is designed for large groups, quick service and Insta‑worthy presentation.
+          </p>
+          <p style="margin-top:8px;">
+            From 50 to 500+ guests, we help you pick the right package, flavors and toppings
+            so your dessert counter becomes the highlight of the function.
+          </p>
+          <div class="chips">
+            <span class="chip">On‑site scooping team</span>
+            <span class="chip">Free tasting for big bookings</span>
+            <span class="chip">Veg & Jain friendly options</span>
+            <span class="chip">Pre‑decided time slots</span>
+          </div>
+        </div>
+        <div>
+          <div class="stats">
+            <div class="stat-card">
+              <div class="stat-label">Events served</div>
+              <div class="stat-value">100+ events</div>
+              <div class="note-small">Birthdays, weddings, corporates & more.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Average rating</div>
+              <div class="stat-value">4.8 / 5</div>
+              <div class="note-small">From host & guest feedback.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Serving speed</div>
+              <div class="stat-value">200 cups / hr</div>
+              <div class="note-small">No long dessert queues.</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-label">Coverage</div>
+              <div class="stat-value">Thoothukudi +</div>
+              <div class="note-small">Nearby towns on request.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLAVORS -->
+    <section id="flavors" class="fade-in">
+      <div class="section-header">
+        <div class="section-eyebrow">Event menus</div>
+        <h2 class="section-title">Curated flavors for every type of crowd.</h2>
+      </div>
+
+      <div class="glass flavors-grid">
+        <article class="flavor-card">
+          <div class="flavor-pill">Classic crowd‑pleasers</div>
+          <p class="flavor-tagline">Perfect for large mixed‑age events.</p>
+          <span class="flavor-badge">Vanilla • Chocolate • Strawberry</span>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-pill">South Indian specials</div>
+          <p class="flavor-tagline">Local favourites with a twist.</p>
+          <span class="flavor-badge">Pista • Badam • Filter coffee</span>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-pill">Kids party pack</div>
+          <p class="flavor-tagline">Colourful, fun & photo‑friendly.</p>
+          <span class="flavor-badge">Bubblegum • Gems • Brownie</span>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-pill">Premium scoop bar</div>
+          <p class="flavor-tagline">For weddings & corporate galas.</p>
+          <span class="flavor-badge">Belgian chocolate • Nutella swirl</span>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-pill">Vegan / Jain options</div>
+          <p class="flavor-tagline">Dairy‑free & gelato style.</p>
+          <span class="flavor-badge">Tender coconut • Mango sorbet</span>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-pill">Make‑your‑own cup</div>
+          <p class="flavor-tagline">Live toppings & syrups bar.</p>
+          <span class="flavor-badge">Sprinkles • Nuts • Hot fudge</span>
+        </article>
+      </div>
+    </section>
+
+    <!-- BOOKING -->
+    <section id="booking" class="fade-in">
+      <div class="section-header">
+        <div class="section-eyebrow">Check your date</div>
+        <h2 class="section-title">Share a few details — get a WhatsApp confirmation.</h2>
+      </div>
+
+      <div class="booking-grid glass">
+        <form id="bookingForm">
+          <div>
+            <label for="name">Your name</label>
+            <input id="name" name="name" type="text" placeholder="Host / event planner name" required />
+          </div>
+
+          <div>
+            <label for="phone">WhatsApp number</label>
+            <input id="phone" name="phone" type="tel" placeholder="+91…" required />
+            <div class="note-small">All confirmations & menus will be shared on WhatsApp.</div>
+          </div>
+
+          <div>
+            <label for="eventType">Event type</label>
+            <select id="eventType" name="eventType" required>
+              <option value="">Select event type</option>
+              <option>Wedding / Reception</option>
+              <option>Birthday / Kids party</option>
+              <option>Corporate event</option>
+              <option>School / College function</option>
+              <option>Other</option>
+            </select>
+          </div>
+
+          <div>
+            <label for="guests">Approx. guest count</label>
+            <input id="guests" name="guests" type="number" min="20" placeholder="e.g. 150" required />
+          </div>
+
+          <div>
+            <label for="date">Event date</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+
+          <div>
+            <label for="venue">Event venue & city</label>
+            <input id="venue" name="venue" type="text" placeholder="Hall name, area, city" required />
+          </div>
+
+          <div>
+            <label for="notes">Anything else we should know?</label>
+            <textarea id="notes" name="notes" placeholder="Preferred time slot, special requests, veg / Jain etc."></textarea>
+          </div>
+
+          <button type="submit" class="btn-primary">
+            Submit & get availability
+          </button>
+          <div class="note-small">
+            This is a quick enquiry form — final package & price is confirmed by phone / WhatsApp.
+          </div>
+        </form>
+
+        <div>
+          <p class="booking-highlight">
+            A human from EventZ will check your date, travel distance and guest count, then reply with
+            available packages and an estimate, usually within 15–30 minutes during working hours.
+          </p>
+          <div class="slots">
+            <span class="slot-pill">Lunch events: 11am – 3pm</span>
+            <span class="slot-pill">Dinner events: 7pm – 11pm</span>
+            <span class="slot-pill">Special timings on request</span>
+          </div>
+          <div class="whatsapp-card">
+            Prefer direct chat? Send your event details on WhatsApp with “EventZ Ice Cream booking” as
+            the first line & we’ll reply with options and photos.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="fade-in">
+      © 2025 EventZ Ice Creams. Event‑only ice cream catering. Website design handcrafted for a better event booking experience.
+    </footer>
+  </div>
+
+  <!-- Floating CTA -->
+  <div class="floating-cta">
+    <button onclick="scrollToBooking()">
+      Book EventZ Ice Creams
+      <small>Check your date in 30 seconds</small>
+    </button>
+  </div>
+
+  <script>
+    // Smooth scroll helpers
+    function scrollToBooking() {
+      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function scrollToFlavors() {
+      document.getElementById('flavors').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Simple fade-in on scroll
+    const observer = new IntersectionObserver(
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // Form submit handler integrated with Google Sheets via Apps Script
+    document.getElementById('bookingForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const data = {
+        name: this.name.value.trim(),
+        phone: this.phone.value.trim(),
+        eventType: this.eventType.value,
+        guests: this.guests.value,
+        date: this.date.value,
+        venue: this.venue.value.trim(),
+        notes: this.notes.value.trim()
+      };
+
+      // Replace this with your actual Apps Script Web App URL
+      const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbyQSH6iuNdIOaXtbhC2mQdvjNXMuORMn9LrsY_ZCEIWr8s6-c8Rebc5nqXBk4z7iYA/exec';
+
+      try {
+        const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+          method: 'POST',
+          body: JSON.stringify(data),
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const result = await response.json();
+
+        if (result.result === 'success') {
+          alert('Thank you! Your booking request has been received. We will contact you shortly.');
+          this.reset();
+        } else {
+          alert('Submission error: Please try again later.');
+        }
+      } catch (error) {
+        alert('Failed to submit booking. Please check your internet connection and try again.');
+      }
+    });
+  </script>
+</body>
+</html>
