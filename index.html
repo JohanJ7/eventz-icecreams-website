@@ -978,7 +978,7 @@
       };
 
       // Replace this with your actual Apps Script Web App URL
-      const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbx-Kze0QLgkei1ZH4CdeMaUljB2tgaj9wQrSrSIoqHf8gnwCFdfpKVQbIrQE8Z_ZKY/exec';
+      const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbymYO2MAbrHvR51lvKBRKnivEmdJsFWIph0Wq08WM_O7zU-EvQpqnCNkFFAk8XuGYA/exec';
 
       try {
         const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
@@ -1000,9 +1000,13 @@
         alert('Failed to submit booking. Please check your internet connection and try again.');
       }
     });
+    headers: {
+            'Content-Type': 'text/plain;charset=utf-8',
+          },
   </script>
 </body>
 </html>
+
 
 
 
