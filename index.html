@@ -1,26 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>EventZ Ice Creams | Event Only Ice Cream Catering</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Poppins:wght@300;400;600;700&display=swap"
+    rel="stylesheet" />
 
   <style>
     :root {
-      --primary: #ff7b54;
-      --primary-dark: #e35a30;
-      --accent: #ffd56f;
-      --bg-gradient: radial-gradient(circle at top left, #ffe5f2, #fff5e6 40%, #e3f6ff 80%);
-      --glass-bg: rgba(255, 255, 255, 0.18);
-      --glass-border: rgba(255, 255, 255, 0.6);
-      --text-main: #1f2933;
+      --primary: #a8b597;
+      --primary-light: #c4d4b0;
+      --primary-dark: #8a9b7a;
+      --accent: #d4a855;
+      --accent-light: #e8c170;
+      --accent-dark: #b8924a;
+      --cream: #fef9f3;
+      --bg-gradient: linear-gradient(135deg,
+          #fef9f3,
+          #f5ede5 40%,
+          #f0ebe5 90%);
+      --glass-bg: rgba(255, 255, 255, 0.65);
+      --glass-border: rgba(255, 255, 255, 0.85);
+      --text-main: #2d2d2d;
       --text-muted: #6b7280;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.18);
-      --radius-xl: 24px;
-      --transition-fast: 0.25s ease;
+      --shadow-soft: 0 16px 40px rgba(0, 0, 0, 0.1),
+        0 0 0 1px rgba(255, 255, 255, 0.5);
+      --radius-xl: 30px;
+      --transition-fast: 0.3s ease;
     }
 
     * {
@@ -31,11 +40,21 @@
     }
 
     body {
-      font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        sans-serif;
       background: var(--bg-gradient);
       color: var(--text-main);
       min-height: 100vh;
       line-height: 1.6;
+    }
+
+    .card {
+      background: var(--glass-bg);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
     }
 
     /* Background decorative blobs */
@@ -50,32 +69,32 @@
     .bg-blur span {
       position: absolute;
       border-radius: 999px;
-      filter: blur(60px);
-      opacity: 0.7;
+      filter: blur(80px);
+      opacity: 0.6;
     }
 
     .bg-blur .blob-1 {
-      width: 260px;
-      height: 260px;
-      background: #ffd1ea;
-      top: -40px;
-      left: -40px;
+      width: 320px;
+      height: 320px;
+      background: var(--accent-light);
+      top: -50px;
+      left: -50px;
     }
 
     .bg-blur .blob-2 {
-      width: 320px;
-      height: 320px;
-      background: #ffe8b3;
-      bottom: -80px;
-      right: -40px;
+      width: 380px;
+      height: 380px;
+      background: var(--primary-light);
+      bottom: -100px;
+      right: -60px;
     }
 
     .bg-blur .blob-3 {
-      width: 220px;
-      height: 220px;
-      background: #c7f5ff;
-      top: 30%;
-      right: 10%;
+      width: 280px;
+      height: 280px;
+      background: var(--accent);
+      top: 25%;
+      right: 5%;
     }
 
     /* Layout */
@@ -85,94 +104,83 @@
       padding: 20px 16px 80px;
     }
 
-    /* Glass card */
-    .glass {
-      background: var(--glass-bg);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--glass-border);
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
-    }
-
     /* Navbar */
     .nav {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 12px 20px;
-      margin-bottom: 18px;
+      padding: 14px 24px;
+      margin-bottom: 24px;
       position: sticky;
-      top: 10px;
+      top: 15px;
       z-index: 20;
     }
 
     .nav-left {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .logo-pill {
-      width: 40px;
-      height: 40px;
-      border-radius: 18px;
-      background: linear-gradient(135deg, #ff9a8b, #fecf6a);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
       display: flex;
       align-items: center;
       justify-content: center;
       color: #fff;
       font-weight: 700;
-      font-size: 1.1rem;
-      box-shadow: 0 10px 25px rgba(248, 113, 113, 0.4);
+      font-size: 1.2rem;
+      font-family: "Lobster", cursive;
+      box-shadow: 0 10px 25px rgba(168, 181, 151, 0.5);
     }
 
     .brand-title {
       font-weight: 700;
-      letter-spacing: 0.03em;
-      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      font-size: 1.2rem;
     }
 
     .brand-sub {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--text-muted);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 18px;
-      font-size: 0.9rem;
+      gap: 20px;
+      font-size: 0.95rem;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--text-main);
-      padding: 6px 10px;
+      padding: 8px 12px;
       border-radius: 999px;
-      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
-    }
-
-    .nav-links a:hover {
-      background: rgba(255, 255, 255, 0.7);
-      transform: translateY(-1px);
-      box-shadow: 0 10px 22px rgba(148, 163, 184, 0.4);
+      transition: all var(--transition-fast);
+      font-weight: 500;
     }
 
     .nav-cta {
-      background: linear-gradient(135deg, var(--primary), var(--accent));
-      color: #1f2933;
+      background: linear-gradient(135deg,
+          var(--accent-light),
+          var(--accent-dark));
+      color: #fff !important;
       font-weight: 600;
-      box-shadow: 0 12px 30px rgba(248, 113, 113, 0.6);
+      box-shadow: 0 12px 30px rgba(212, 168, 85, 0.4);
+      padding: 8px 18px;
     }
 
     /* Hero */
     .hero {
-      margin-top: 14px;
-      padding: 26px 22px 24px;
+      margin-top: 20px;
+      padding: 40px 30px;
       display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+      gap: 30px;
       align-items: center;
     }
 
@@ -180,53 +188,60 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.85);
-      font-size: 0.76rem;
+      background: rgba(255, 255, 255, 0.9);
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
     }
 
     .badge-dot {
-      width: 8px;
-      height: 8px;
+      width: 10px;
+      height: 10px;
       border-radius: 999px;
-      background: #22c55e;
-      box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+      background: var(--primary);
+      box-shadow: 0 0 0 5px rgba(168, 181, 151, 0.3);
     }
 
     .hero h1 {
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-size: clamp(2.2rem, 5vw, 3.2rem);
       line-height: 1.1;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-weight: 700;
     }
 
     .hero span.highlight {
-      color: var(--primary-dark);
+      color: var(--accent-dark);
+      font-family: "Lobster", cursive;
+      filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.1));
     }
 
     .hero-sub {
-      font-size: 0.98rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
-      margin-bottom: 18px;
+      margin-bottom: 24px;
+      max-width: 500px;
     }
 
     .hero-meta {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      font-size: 0.8rem;
-      margin-bottom: 18px;
+      gap: 16px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
     }
 
     .meta-pill {
-      padding: 6px 10px;
+      padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
+      background: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.8);
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      border: 1px solid rgba(148, 163, 184, 0.6);
     }
 
     .dot-mini {
@@ -235,14 +250,22 @@
       border-radius: 50%;
     }
 
-    .dot-pink { background: #fb7185; }
-    .dot-gold { background: #facc15; }
-    .dot-blue { background: #38bdf8; }
+    .dot-pistachio {
+      background: var(--primary);
+    }
+
+    .dot-butterscotch {
+      background: var(--accent);
+    }
+
+    .dot-cream {
+      background: #f5deb3;
+    }
 
     .hero-cta-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 12px;
       align-items: center;
     }
 
@@ -250,321 +273,540 @@
       border: none;
       outline: none;
       cursor: pointer;
-      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      background: linear-gradient(135deg,
+          var(--accent-light),
+          var(--accent-dark));
       color: #fff;
-      padding: 10px 18px;
+      padding: 12px 24px;
       border-radius: 999px;
       font-weight: 600;
-      font-size: 0.92rem;
-      box-shadow: 0 14px 35px rgba(248, 113, 113, 0.6);
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+      font-size: 1rem;
+      box-shadow: 0 16px 40px rgba(212, 168, 85, 0.5);
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast);
     }
 
     .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 18px 40px rgba(248, 113, 113, 0.7);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(212, 168, 85, 0.7);
     }
 
     .btn-ghost {
       border-radius: 999px;
-      padding: 9px 14px;
+      padding: 11px 18px;
       border: 1px solid rgba(148, 163, 184, 0.6);
-      background: rgba(255, 255, 255, 0.7);
-      font-size: 0.86rem;
+      background: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
       color: var(--text-muted);
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
-      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      gap: 6px;
+      transition: all var(--transition-fast);
     }
 
     .btn-ghost:hover {
       background: #ffffff;
       transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(148, 163, 184, 0.5);
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
     }
 
     .hero-right {
       position: relative;
-      min-height: 220px;
+      min-height: 280px;
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px;
     }
 
     .hero-card {
       width: 100%;
-      max-width: 320px;
-      padding: 18px;
+      max-width: 350px;
+      padding: 24px;
       position: relative;
       overflow: hidden;
       text-align: center;
     }
 
     .ice-circle {
-      width: 140px;
-      height: 140px;
+      width: 160px;
+      height: 160px;
       border-radius: 999px;
-      margin: 0 auto 12px;
-      background: conic-gradient(from 210deg, #ff9a8b, #fecf6a, #f6d365, #ff9a8b);
-      padding: 6px;
+      margin: 0 auto 16px;
+      background: conic-gradient(from 210deg,
+          var(--accent-light),
+          var(--primary-light),
+          var(--primary),
+          var(--accent-light));
+      padding: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.6rem;
+      font-size: 3.2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) inset;
     }
 
     .ice-inner {
       width: 100%;
       height: 100%;
       border-radius: inherit;
-      background: radial-gradient(circle at 30% 30%, #fffaf0, #ffe4e6);
+      background: radial-gradient(circle at 30% 30%, #fffaf0, #fff2f5);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2.8rem;
+      font-size: 3rem;
     }
 
     .hero-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 4px;
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      font-weight: 600;
     }
 
     .hero-card p {
-      font-size: 0.84rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     .hero-tag-row {
       display: flex;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
       flex-wrap: wrap;
-      font-size: 0.75rem;
+      font-size: 0.8rem;
     }
 
     .hero-tag {
-      padding: 4px 9px;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #4b5563;
-    }
-
-    .hero-badge {
-      position: absolute;
-      right: 10px;
-      top: 12px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 0.7rem;
-      background: rgba(15, 118, 110, 0.06);
-      color: #0f766e;
-      border: 1px solid rgba(34, 197, 165, 0.6);
+      background: var(--cream);
+      color: var(--primary-dark);
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
     /* Sections */
     section {
-      margin-top: 26px;
+      margin-top: 40px;
     }
 
     .section-header {
-      margin-bottom: 12px;
+      margin-bottom: 16px;
     }
 
     .section-eyebrow {
       text-transform: uppercase;
-      letter-spacing: 0.12em;
-      font-size: 0.68rem;
-      color: var(--text-muted);
+      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      color: var(--accent-dark);
+      font-weight: 600;
       margin-bottom: 5px;
     }
 
     .section-title {
-      font-size: 1.1rem;
+      font-size: clamp(1.5rem, 3vw, 2rem);
+      font-weight: 700;
     }
 
     .about-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.9fr);
-      gap: 18px;
-      padding: 18px;
+      gap: 24px;
+      padding: 24px;
     }
 
     .about-main {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
     }
 
     .chips {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 12px;
+      gap: 10px;
+      margin-top: 16px;
     }
 
     .chip {
-      padding: 5px 10px;
+      padding: 6px 12px;
       border-radius: 999px;
-      font-size: 0.78rem;
-      background: rgba(255, 255, 255, 0.9);
-      color: #4b5563;
+      font-size: 0.8rem;
+      background: var(--cream);
+      color: var(--primary-dark);
+      font-weight: 500;
+      border: 1px solid var(--primary-light);
     }
 
     .stats {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 8px;
-      font-size: 0.82rem;
+      gap: 12px;
+      margin-top: 10px;
+      font-size: 0.85rem;
     }
 
     .stat-card {
-      padding: 10px;
-      border-radius: 16px;
+      padding: 15px;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.7);
     }
 
     .stat-label {
-      font-size: 0.7rem;
-      color: var(--text-muted);
+      font-size: 0.75rem;
+      color: var(--accent-dark);
+      font-weight: 600;
       margin-bottom: 2px;
     }
 
     .stat-value {
       font-weight: 700;
-      font-size: 0.96rem;
+      font-size: 1.1rem;
+      color: var(--text-main);
     }
 
-    /* Flavors */
+    /* Flavors Section with Images */
     .flavors-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-      padding: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+      padding: 20px;
     }
 
     .flavor-card {
-      padding: 12px;
-      border-radius: 18px;
+      padding: 0;
+      border-radius: 20px;
       background: rgba(255, 255, 255, 0.9);
       display: flex;
       flex-direction: column;
-      gap: 4px;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       position: relative;
       overflow: hidden;
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .flavor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .flavor-image {
+      width: 100%;
+      height: 200px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+    }
+
+    .flavor-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to bottom,
+          rgba(0, 0, 0, 0) 0%,
+          rgba(0, 0, 0, 0.3) 100%);
+    }
+
+    .flavor-content {
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
     .flavor-pill {
-      font-weight: 600;
-      font-size: 0.86rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--primary-dark);
+      margin-bottom: 4px;
     }
 
     .flavor-tagline {
       color: var(--text-muted);
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .flavor-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
     }
 
     .flavor-badge {
-      font-size: 0.7rem;
-      align-self: flex-start;
-      padding: 3px 8px;
+      font-size: 0.75rem;
+      padding: 5px 10px;
       border-radius: 999px;
-      background: rgba(248, 250, 252, 0.9);
-      border: 1px solid rgba(203, 213, 225, 0.9);
+      background: var(--cream);
+      border: 1px solid var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 500;
+    }
+
+    .flavor-price {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--accent-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     }
 
     /* Booking */
     .booking-grid {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 20px;
-      padding: 18px;
+      gap: 30px;
+      padding: 24px;
     }
 
     form {
       display: grid;
-      gap: 10px;
-      font-size: 0.85rem;
+      gap: 15px;
+      font-size: 0.9rem;
     }
 
     label {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 600;
       display: block;
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     input,
     textarea,
     select {
       width: 100%;
-      padding: 8px 10px;
-      border-radius: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
       border: 1px solid rgba(148, 163, 184, 0.7);
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       font-family: inherit;
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       outline: none;
-      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      transition: border-color var(--transition-fast),
+        box-shadow var(--transition-fast), background var(--transition-fast);
     }
 
     input:focus,
     textarea:focus,
     select:focus {
-      border-color: var(--primary);
-      box-shadow: 0 0 0 1px rgba(248, 113, 113, 0.4);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px rgba(212, 168, 85, 0.2);
       background: #ffffff;
+    }
+
+    input.error,
+    select.error {
+      border-color: #ef4444;
+      box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
     }
 
     textarea {
       resize: vertical;
-      min-height: 80px;
+      min-height: 100px;
+    }    
+
+    .date-uppercase{
+        text-transform: uppercase;
     }
 
     .note-small {
-      font-size: 0.72rem;
+      font-size: 0.78rem;
       color: var(--text-muted);
-      margin-top: 2px;
+      margin-top: 4px;
+    }
+
+    .validation-message {
+      font-size: 0.78rem;
+      color: #ef4444;
+      margin-top: 4px;
+      display: none;
+      font-weight: 500;
+    }
+
+    .validation-message.show {
+      display: block;
+    }
+
+    label .required {
+      color: #ef4444;
+      margin-left: 2px;
+    }
+
+    /* Custom Popup Styles */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.6);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      backdrop-filter: blur(4px);
+      animation: fadeIn 0.3s ease;
+    }
+
+    .popup-overlay.show {
+      display: flex;
+    }
+
+    .popup-content {
+      background: white;
+      border-radius: 24px;
+      padding: 40px 30px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      animation: slideUp 0.4s ease;
+      position: relative;
+    }
+
+    .popup-icon {
+      width: 80px;
+      height: 80px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 40px;
+      animation: scaleIn 0.5s ease 0.2s both;
+    }
+
+    .popup-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 12px;
+    }
+
+    .popup-message {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .popup-close-btn {
+      background: linear-gradient(135deg,
+          var(--accent-light),
+          var(--accent-dark));
+      color: white;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 999px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 8px 20px rgba(212, 168, 85, 0.4);
+    }
+
+    .popup-close-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 28px rgba(212, 168, 85, 0.5);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      transform: none !important;
+    }
+
+    .btn-primary:disabled:hover {
+      transform: none !important;
+      box-shadow: 0 16px 40px rgba(212, 168, 85, 0.5);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes scaleIn {
+      from {
+        transform: scale(0);
+      }
+
+      to {
+        transform: scale(1);
+      }
     }
 
     .booking-highlight {
-      font-size: 0.85rem;
+      font-size: 0.9rem;
       color: var(--text-muted);
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      padding-top: 5px;
     }
 
     .slots {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      font-size: 0.76rem;
-      margin-bottom: 10px;
+      gap: 10px;
+      font-size: 0.8rem;
+      margin-bottom: 15px;
     }
 
     .slot-pill {
-      padding: 5px 9px;
+      padding: 6px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      color: #4b5563;
+      background: var(--cream);
+      color: var(--primary-dark);
+      font-weight: 500;
+      border: 1px solid var(--primary-light);
     }
 
     .whatsapp-card {
-      margin-top: 10px;
-      padding: 9px 10px;
-      border-radius: 14px;
-      background: rgba(16, 185, 129, 0.06);
-      border: 1px dashed rgba(34, 197, 94, 0.6);
-      font-size: 0.8rem;
+      margin-top: 20px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.6);
+      font-size: 0.85rem;
       color: #0f766e;
+      font-weight: 500;
     }
 
-    /* Floating CTA */
+    /* Floating CTA (WhatsApp) */
     .floating-cta {
       position: fixed;
-      right: 14px;
-      bottom: 14px;
+      right: 20px;
+      bottom: 20px;
       z-index: 30;
     }
 
@@ -573,34 +815,43 @@
       outline: none;
       cursor: pointer;
       border-radius: 999px;
-      padding: 10px 16px;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
+      padding: 12px 20px;
+      background: linear-gradient(135deg, #10b981, #059669);
       color: #ecfdf3;
-      font-size: 0.86rem;
+      font-size: 0.9rem;
       display: flex;
+      flex-direction: column;
       align-items: center;
-      gap: 6px;
-      box-shadow: 0 16px 40px rgba(22, 163, 74, 0.7);
+      gap: 2px;
+      box-shadow: 0 16px 40px rgba(5, 150, 105, 0.7);
+      transition: transform var(--transition-fast),
+        box-shadow var(--transition-fast);
+    }
+
+    .floating-cta button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 45px rgba(5, 150, 105, 0.8);
     }
 
     .floating-cta small {
-      font-size: 0.7rem;
-      opacity: 0.85;
+      font-size: 0.75rem;
+      opacity: 0.9;
     }
 
     /* Footer */
     footer {
-      margin-top: 26px;
+      margin-top: 40px;
       font-size: 0.75rem;
       color: var(--text-muted);
       text-align: center;
+      padding-bottom: 20px;
     }
 
     /* Animations */
     .fade-in {
       opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(10px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
 
     .fade-in.visible {
@@ -609,37 +860,37 @@
     }
 
     /* Responsive */
-    @media (max-width: 840px) {
-      .hero,
-      .about-grid,
-      .booking-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
+    @media (max-width: 960px) {
       .hero {
-        padding: 18px 16px;
+        grid-template-columns: minmax(0, 1fr);
+        padding: 30px 20px;
       }
 
       .hero-right {
         order: -1;
       }
 
-      .nav {
-        padding-inline: 14px;
+      .about-grid,
+      .booking-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .flavors-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      .booking-grid {
+        gap: 20px;
       }
 
       .nav-links {
-        gap: 10px;
-        font-size: 0.78rem;
+        gap: 14px;
+        font-size: 0.9rem;
       }
     }
 
-    @media (max-width: 640px) {
+    @media (max-width: 680px) {
       .page {
-        padding-inline: 12px;
-      }
-
-      .nav {
         padding-inline: 10px;
       }
 
@@ -648,25 +899,25 @@
       }
 
       .flavors-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-
-      .hero-card {
-        max-width: 260px;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .flavors-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
-      .floating-cta button {
-        padding-inline: 12px;
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero-card {
+        max-width: 300px;
+      }
+
+      .floating-cta {
+        right: 10px;
+        bottom: 10px;
       }
     }
   </style>
 </head>
+
 <body>
   <div class="bg-blur">
     <span class="blob-1"></span>
@@ -675,8 +926,7 @@
   </div>
 
   <div class="page">
-    <!-- NAV -->
-    <header class="nav glass fade-in">
+    <header class="nav card fade-in">
       <div class="nav-left">
         <div class="logo-pill">EZ</div>
         <div>
@@ -691,32 +941,33 @@
       </nav>
     </header>
 
-    <!-- HERO -->
-    <main class="hero glass fade-in">
+    <main class="hero card fade-in">
       <div>
         <div class="badge">
           <span class="badge-dot"></span>
           <span>Now booking 2025–26 events</span>
         </div>
         <h1>
-          The event‑only <span class="highlight">ice cream bar</span> your guests remember.
+          The event‑only <span class="highlight">ice cream bar</span> your
+          guests remember.
         </h1>
         <p class="hero-sub">
-          EventZ Ice Creams brings a live, premium ice cream experience to weddings, birthdays,
-          corporates and school events — freshly churned, perfectly plated, and totally hassle‑free.
+          EventZ Ice Creams brings a live, premium ice cream experience to
+          weddings, birthdays, corporates and school events — freshly churned,
+          perfectly plated, and totally hassle‑free.
         </p>
 
         <div class="hero-meta">
           <div class="meta-pill">
-            <span class="dot-mini dot-pink"></span>
-            <span>Minimum 50 guests</span>
+            <span class="dot-mini dot-pistachio"></span>
+            <span>Minimum 150 guests</span>
           </div>
           <div class="meta-pill">
-            <span class="dot-mini dot-gold"></span>
+            <span class="dot-mini dot-butterscotch"></span>
             <span>Custom menus per event</span>
           </div>
           <div class="meta-pill">
-            <span class="dot-mini dot-blue"></span>
+            <span class="dot-mini dot-cream"></span>
             <span>Serving Thoothukudi & nearby</span>
           </div>
         </div>
@@ -732,14 +983,14 @@
       </div>
 
       <div class="hero-right">
-        <div class="hero-card glass">
-          <div class="hero-badge">Event‑only ice cream catering</div>
+        <div class="hero-card card">
           <div class="ice-circle">
             <div class="ice-inner">🍦</div>
           </div>
           <h3>Live scooping at your venue</h3>
           <p>
-            We arrive with freezers, toppings, staff & smiles — you just confirm the date and guest count.
+            We arrive with freezers, toppings, staff & smiles — you just
+            confirm the date and guest count.
           </p>
           <div class="hero-tag-row">
             <span class="hero-tag">Weddings</span>
@@ -750,22 +1001,26 @@
       </div>
     </main>
 
-    <!-- ABOUT -->
     <section id="about" class="fade-in">
       <div class="section-header">
         <div class="section-eyebrow">Why EventZ</div>
-        <h2 class="section-title">Designed only for events — not walk‑in shop.</h2>
+        <h2 class="section-title">
+          Designed exclusively for events — a premium dessert experience.
+        </h2>
       </div>
 
-      <div class="about-grid glass">
+      <div class="about-grid card">
         <div class="about-main">
           <p>
-            EventZ Ice Creams focuses only on events, so the entire setup, menu and service
-            is designed for large groups, quick service and Insta‑worthy presentation.
+            EventZ Ice Creams focuses *only* on events, so the entire setup,
+            menu, and service is designed for large groups, quick service, and
+            **Insta‑worthy presentation**. We ensure the ice cream service is
+            a seamless, memorable part of your function, not an afterthought.
           </p>
-          <p style="margin-top:8px;">
-            From 50 to 500+ guests, we help you pick the right package, flavors and toppings
-            so your dessert counter becomes the highlight of the function.
+          <p style="margin-top: 10px">
+            From **150 to 500+ guests**, we help you pick the right package,
+            flavors, and toppings so your dessert counter becomes the
+            highlight. We handle logistics, setup, serving, and cleanup.
           </p>
           <div class="chips">
             <span class="chip">On‑site scooping team</span>
@@ -779,7 +1034,9 @@
             <div class="stat-card">
               <div class="stat-label">Events served</div>
               <div class="stat-value">100+ events</div>
-              <div class="note-small">Birthdays, weddings, corporates & more.</div>
+              <div class="note-small">
+                Birthdays, weddings, corporates & more.
+              </div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Average rating</div>
@@ -789,7 +1046,7 @@
             <div class="stat-card">
               <div class="stat-label">Serving speed</div>
               <div class="stat-value">200 cups / hr</div>
-              <div class="note-small">No long dessert queues.</div>
+              <div class="note-small">Minimizing dessert queues.</div>
             </div>
             <div class="stat-card">
               <div class="stat-label">Coverage</div>
@@ -801,74 +1058,269 @@
       </div>
     </section>
 
-    <!-- FLAVORS -->
     <section id="flavors" class="fade-in">
       <div class="section-header">
         <div class="section-eyebrow">Event menus</div>
-        <h2 class="section-title">Curated flavors for every type of crowd.</h2>
+        <h2 class="section-title">
+          Curated, premium flavors for every type of crowd.
+        </h2>
       </div>
 
-      <div class="glass flavors-grid">
+      <div class="card flavors-grid">
         <article class="flavor-card">
-          <div class="flavor-pill">Classic crowd‑pleasers</div>
-          <p class="flavor-tagline">Perfect for large mixed‑age events.</p>
-          <span class="flavor-badge">Vanilla • Chocolate • Strawberry</span>
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #ffd89b 0%,
+                  #f9a875 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+            <div class="flavor-price">Popular</div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🌰 Classic Butterscotch</div>
+            <p class="flavor-tagline">
+              Rich, buttery caramel swirled with crunchy toffee bits. Perfect
+              for all age groups and the most requested flavor at weddings.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Egg-free</span>
+              <span class="flavor-badge">Best seller</span>
+              <span class="flavor-badge">Toffee bits</span>
+            </div>
+          </div>
         </article>
 
         <article class="flavor-card">
-          <div class="flavor-pill">South Indian specials</div>
-          <p class="flavor-tagline">Local favourites with a twist.</p>
-          <span class="flavor-badge">Pista • Badam • Filter coffee</span>
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #c3e6a5 0%,
+                  #a8d68f 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+            <div class="flavor-price">Premium</div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🥜 Pistachio Dream</div>
+            <p class="flavor-tagline">
+              Authentic pistachio flavor with real nut pieces. Creamy, nutty,
+              and utterly delicious. A South Indian favorite with a gourmet
+              twist.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Real pistachios</span>
+              <span class="flavor-badge">Premium choice</span>
+              <span class="flavor-badge">Nut lovers</span>
+            </div>
+          </div>
         </article>
 
         <article class="flavor-card">
-          <div class="flavor-pill">Kids party pack</div>
-          <p class="flavor-tagline">Colourful, fun & photo‑friendly.</p>
-          <span class="flavor-badge">Bubblegum • Gems • Brownie</span>
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #f5d5c0 0%,
+                  #e8b896 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🍫 Belgian Chocolate</div>
+            <p class="flavor-tagline">
+              Rich, dark Belgian chocolate ice cream with chocolate chunks.
+              The ultimate indulgence for chocolate lovers at any celebration.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Belgian cocoa</span>
+              <span class="flavor-badge">Chocolate chunks</span>
+              <span class="flavor-badge">Luxury</span>
+            </div>
+          </div>
         </article>
 
         <article class="flavor-card">
-          <div class="flavor-pill">Premium scoop bar</div>
-          <p class="flavor-tagline">For weddings & corporate galas.</p>
-          <span class="flavor-badge">Belgian chocolate • Nutella swirl</span>
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #ffecd2 0%,
+                  #fcb69f 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🍑 Mango Mania</div>
+            <p class="flavor-tagline">
+              Made with fresh Alphonso mangoes. A tropical treat that brings
+              the taste of summer to your celebration. Kids and adults love
+              it!
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Alphonso mango</span>
+              <span class="flavor-badge">Seasonal special</span>
+              <span class="flavor-badge">Fruity</span>
+            </div>
+          </div>
         </article>
 
         <article class="flavor-card">
-          <div class="flavor-pill">Vegan / Jain options</div>
-          <p class="flavor-tagline">Dairy‑free & gelato style.</p>
-          <span class="flavor-badge">Tender coconut • Mango sorbet</span>
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #e0c3fc 0%,
+                  #d5a9e8 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🍓 Strawberry Bliss</div>
+            <p class="flavor-tagline">
+              Fresh strawberry puree with real fruit chunks. Light,
+              refreshing, and perfect for those who love fruity flavors at
+              events.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Real strawberries</span>
+              <span class="flavor-badge">Fruity fresh</span>
+              <span class="flavor-badge">Light option</span>
+            </div>
+          </div>
         </article>
 
         <article class="flavor-card">
-          <div class="flavor-pill">Make‑your‑own cup</div>
-          <p class="flavor-tagline">Live toppings & syrups bar.</p>
-          <span class="flavor-badge">Sprinkles • Nuts • Hot fudge</span>
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #ffeaa7 0%,
+                  #fdcb6e 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+            <div class="flavor-price">New</div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">☕ Filter Coffee</div>
+            <p class="flavor-tagline">
+              South Indian filter coffee ice cream with a hint of chicory. A
+              unique blend that coffee lovers absolutely adore at functions.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Coffee essence</span>
+              <span class="flavor-badge">Regional favorite</span>
+              <span class="flavor-badge">Adult choice</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #fdfbfb 0%,
+                  #ebedee 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🍦 Classic Vanilla</div>
+            <p class="flavor-tagline">
+              Premium Madagascar vanilla bean ice cream. Simple, elegant, and
+              pairs perfectly with any topping. The timeless classic.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Madagascar vanilla</span>
+              <span class="flavor-badge">All occasions</span>
+              <span class="flavor-badge">Versatile</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #89f7fe 0%,
+                  #66a6ff 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">💙 Bubblegum Blast</div>
+            <p class="flavor-tagline">
+              Colorful, fun bubblegum flavor that kids go crazy for! Perfect
+              for birthday parties and celebrations with younger guests.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Kids favorite</span>
+              <span class="flavor-badge">Birthday parties</span>
+              <span class="flavor-badge">Colorful</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="flavor-card">
+          <div class="flavor-image" style="
+                background-image: linear-gradient(
+                  135deg,
+                  #ffecd2 0%,
+                  #f8d5a0 100%
+                );
+              ">
+            <div class="flavor-overlay"></div>
+            <div class="flavor-price">Vegan</div>
+          </div>
+          <div class="flavor-content">
+            <div class="flavor-pill">🥥 Tender Coconut</div>
+            <p class="flavor-tagline">
+              Dairy-free coconut milk base with tender coconut pieces.
+              Refreshing, light, and perfect for Jain and vegan guests.
+            </p>
+            <div class="flavor-badge-row">
+              <span class="flavor-badge">Dairy-free</span>
+              <span class="flavor-badge">Jain friendly</span>
+              <span class="flavor-badge">Refreshing</span>
+            </div>
+          </div>
         </article>
       </div>
     </section>
 
-    <!-- BOOKING -->
     <section id="booking" class="fade-in">
       <div class="section-header">
         <div class="section-eyebrow">Check your date</div>
-        <h2 class="section-title">Share a few details — get a WhatsApp confirmation.</h2>
+        <h2 class="section-title">
+          Share a few details — get a personalized quote on WhatsApp.
+        </h2>
       </div>
 
-      <div class="booking-grid glass">
+      <div class="booking-grid card">
         <form id="bookingForm">
           <div>
-            <label for="name">Your name</label>
+            <label for="name">Your name <span class="required">*</span></label>
             <input id="name" name="name" type="text" placeholder="Host / event planner name" required />
           </div>
 
           <div>
-            <label for="phone">WhatsApp number</label>
-            <input id="phone" name="phone" type="tel" placeholder="+91…" required />
-            <div class="note-small">All confirmations & menus will be shared on WhatsApp.</div>
+            <label for="phone">WhatsApp number (10 Digits Only)
+              <span class="required">*</span></label>
+            <input id="phone" name="phone" type="tel" placeholder="9876543210" maxlength="10" required />
+            <p class="validation-message" id="phone-error">
+              Please enter a valid 10-digit number.
+            </p>
+            <div class="note-small">
+              All confirmations & menus will be shared on WhatsApp.
+            </div>
           </div>
 
           <div>
-            <label for="eventType">Event type</label>
+            <label for="eventType">Event type <span class="required">*</span></label>
             <select id="eventType" name="eventType" required>
               <option value="">Select event type</option>
               <option>Wedding / Reception</option>
@@ -880,37 +1332,51 @@
           </div>
 
           <div>
-            <label for="guests">Approx. guest count</label>
-            <input id="guests" name="guests" type="number" min="20" placeholder="e.g. 150" required />
+            <label for="guests">Approx. guest count (Min 150)
+              <span class="required">*</span></label>
+            <input id="guests" name="guests" type="number" min="150" placeholder="e.g. 150, 300, 500" required />
+            <p class="validation-message" id="guests-error">
+              Minimum guest count is 150.
+            </p>
           </div>
 
           <div>
-            <label for="date">Event date</label>
-            <input id="date" name="date" type="date" required />
+            <label for="date">Event date (Future Date Only)
+              <span class="required">*</span></label>
+            <input id="date" name="date" type="date" class="date-uppercase" required />
+            <p class="validation-message" id="date-error">
+              Please select a future date.
+            </p>
           </div>
 
           <div>
-            <label for="venue">Event venue & city</label>
-            <input id="venue" name="venue" type="text" placeholder="Hall name, area, city" required />
+            <label for="venue">Event venue & city <span class="required">*</span></label>
+            <input id="venue" name="venue" type="text"
+              placeholder="Hall name, area, city (e.g., Leela Palace, ECR, Chennai)" required />
           </div>
 
           <div>
-            <label for="notes">Anything else we should know?</label>
-            <textarea id="notes" name="notes" placeholder="Preferred time slot, special requests, veg / Jain etc."></textarea>
+            <label for="notes">Anything else we should know? (Optional)</label>
+            <textarea id="notes" name="notes"
+              placeholder="Preferred time slot, special requests, veg / Jain etc."></textarea>
           </div>
 
           <button type="submit" class="btn-primary">
             Submit & get availability
           </button>
           <div class="note-small">
-            This is a quick enquiry form — final package & price is confirmed by phone / WhatsApp.
+            This is a quick enquiry form — final package & price is confirmed
+            by phone / WhatsApp.
           </div>
         </form>
 
         <div>
           <p class="booking-highlight">
-            A human from EventZ will check your date, travel distance and guest count, then reply with
-            available packages and an estimate, usually within 15–30 minutes during working hours.
+            A human from EventZ will check your date, travel distance, and
+            guest count, then reply with available packages and an estimate,
+            usually within **15–30 minutes** during working hours. This
+            ensures you get a custom quote tailored to your event's specific
+            needs.
           </p>
           <div class="slots">
             <span class="slot-pill">Lunch events: 11am – 3pm</span>
@@ -918,97 +1384,261 @@
             <span class="slot-pill">Special timings on request</span>
           </div>
           <div class="whatsapp-card">
-            Prefer direct chat? Send your event details on WhatsApp with “EventZ Ice Cream booking” as
-            the first line & we’ll reply with options and photos.
+            **Prefer a direct chat?** Send your event details on WhatsApp with
+            *"EventZ Ice Cream booking"* as the first line & we'll reply with
+            options and photos. **Click the button below!**
           </div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
     <footer class="fade-in">
-      © 2025 EventZ Ice Creams. Event‑only ice cream catering. Website design handcrafted for a better event booking experience.
+      © 2025 EventZ Ice Creams. Event‑only ice cream catering. Handcrafted
+      website design for a better event booking experience.
     </footer>
   </div>
 
-  <!-- Floating CTA -->
   <div class="floating-cta">
-    <button onclick="scrollToBooking()">
-      Book EventZ Ice Creams
-      <small>Check your date in 30 seconds</small>
+    <button class="btn-whatsapp">
+      Chat on WhatsApp
+      <small>Book your event now!</small>
     </button>
   </div>
 
+  <!-- Success Popup -->
+  <div class="popup-overlay" id="successPopup">
+    <div class="popup-content">
+      <div class="popup-icon">✓</div>
+      <h3 class="popup-title">Thank You!</h3>
+      <p class="popup-message">
+        Your booking request has been received successfully. We will contact
+        you shortly on WhatsApp to confirm availability and discuss details.
+      </p>
+      <button class="popup-close-btn" onclick="closePopup()">Got it!</button>
+    </div>
+  </div>
+
   <script>
-    // Smooth scroll helpers
     function scrollToBooking() {
-      document.getElementById('booking').scrollIntoView({ behavior: 'smooth' });
+      document
+        .getElementById("booking")
+        .scrollIntoView({ behavior: "smooth" });
     }
 
     function scrollToFlavors() {
-      document.getElementById('flavors').scrollIntoView({ behavior: 'smooth' });
+      document
+        .getElementById("flavors")
+        .scrollIntoView({ behavior: "smooth" });
     }
 
-    // Simple fade-in on scroll
+    function closePopup() {
+      document.getElementById("successPopup").classList.remove("show");
+    }
+
     const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
+      (entries) => {
+        entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            entry.target.classList.add("visible");
           }
         });
       },
       { threshold: 0.1 }
     );
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    document
+      .querySelector(".btn-whatsapp")
+      .addEventListener("click", function () {
+        var message = "Hi, I would like to enquire about your services.";
 
-    // Form submit handler integrated with Google Sheets via Apps Script
-    document.getElementById('bookingForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
+        var whatsappUrl =
+          "https://wa.me/917598754739?text=" + encodeURIComponent(message);
+        window.open(whatsappUrl, "_blank");
+      });
 
-      const data = {
-        name: this.name.value.trim(),
-        phone: this.phone.value.trim(),
-        eventType: this.eventType.value,
-        guests: this.guests.value,
-        date: this.date.value,
-        venue: this.venue.value.trim(),
-        notes: this.notes.value.trim()
-      };
+    document
+      .querySelectorAll(".fade-in")
+      .forEach((el) => observer.observe(el));
 
-      // Replace this with your actual Apps Script Web App URL
-      const GOOGLE_SHEET_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbymYO2MAbrHvR51lvKBRKnivEmdJsFWIph0Wq08WM_O7zU-EvQpqnCNkFFAk8XuGYA/exec';
+    // Set minimum date to today for date input
+    const dateInput = document.getElementById("date");
+    const today = new Date().toISOString().split("T")[0];
+    dateInput.setAttribute("min", today);
 
-      try {
-        const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
-          method: 'POST',
-          body: JSON.stringify(data),
-          headers: {
-            'Content-Type': 'text/plain;charset=utf-8',
-          },
-         
-        });
-        const result = await response.json();
-
-        if (result.result === 'success') {
-          alert('Thank you! Your booking request has been received. We will contact you shortly.');
-          this.reset();
-        } else {
-          alert('Submission error: Please try again later.');
-        }
-      } catch (error) {
-        alert('Failed to submit booking. Please check your internet connection and try again.');
+    // Validation helper function
+    function setError(inputElement, messageId, condition) {
+      const messageElement = document.getElementById(messageId);
+      if (condition) {
+        inputElement.classList.add("error");
+        messageElement.classList.add("show");
+      } else {
+        inputElement.classList.remove("error");
+        messageElement.classList.remove("show");
       }
+      return !condition;
+    }
+
+    // Real-time validation for phone number
+    document.getElementById("phone").addEventListener("input", function (e) {
+      // Remove non-digit characters
+      this.value = this.value.replace(/\D/g, "");
+
+      const phoneValue = this.value;
+      setError(
+        this,
+        "phone-error",
+        phoneValue.length > 0 && phoneValue.length !== 10
+      );
     });
-   
+
+    // Real-time validation for guest count
+    document.getElementById("guests").addEventListener("input", function (e) {
+      const guestsValue = parseInt(this.value, 10);
+      setError(
+        this,
+        "guests-error",
+        this.value.length > 0 && (isNaN(guestsValue) || guestsValue < 150)
+      );
+    });
+
+    // Real-time validation for date
+    document.getElementById("date").addEventListener("change", function (e) {
+      const selectedDate = new Date(this.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      setError(this, "date-error", this.value && selectedDate < today);
+    });
+
+    function validateForm(e) {
+      const form = document.getElementById("bookingForm");
+      let isValid = true;
+
+      // Validate phone
+      const phoneInput = form.phone;
+      const phoneValue = phoneInput.value.replace(/\s/g, "");
+      if (
+        !setError(phoneInput, "phone-error", !/^\d{10}$/.test(phoneValue))
+      ) {
+        isValid = false;
+      }
+
+      // Validate guests
+      const guestsInput = form.guests;
+      const guestsValue = parseInt(guestsInput.value, 10);
+      if (
+        !setError(
+          guestsInput,
+          "guests-error",
+          isNaN(guestsValue) || guestsValue < 150
+        )
+      ) {
+        isValid = false;
+      }
+
+      // Validate date
+      const dateInput = form.date;
+      const selectedDate = new Date(dateInput.value);
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      if (!setError(dateInput, "date-error", selectedDate < today)) {
+        isValid = false;
+      }
+
+      if (!isValid) {
+        e.preventDefault();
+        const firstError = document.querySelector(".error");
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return false;
+      }
+
+      return true;
+    }
+
+    document
+      .getElementById("bookingForm")
+      .addEventListener("submit", async function (e) {
+        if (!validateForm(e)) {
+          return;
+        }
+
+        e.preventDefault();
+
+        // Disable submit button
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.textContent;
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+
+        const data = {
+          name: this.name.value.trim(),
+          phone: this.phone.value.trim(),
+          eventType: this.eventType.value,
+          guests: this.guests.value,
+          date: this.date.value,
+          venue: this.venue.value.trim(),
+          notes: this.notes.value.trim(),
+        };
+
+        const GOOGLE_SHEET_WEB_APP_URL =
+          "https://script.google.com/macros/s/AKfycbyIjQEUragzVbpF5c2P9pR6Yk6kBIz90VIvKaACWhIPGs_rXeTf5_We0iSftd4KcnmQ/exec";
+
+        try {
+          const response = await fetch(GOOGLE_SHEET_WEB_APP_URL, {
+            method: "POST",
+            body: JSON.stringify(data),
+            headers: {
+              "Content-Type": "text/plain;charset=utf-8",
+            },
+          });
+          const result = await response.json();
+
+          if (result.result === "success") {
+            // Show custom popup
+            document.getElementById("successPopup").classList.add("show");
+
+            // Reset form
+            this.reset();
+
+            // Clear all error states
+            document
+              .querySelectorAll(".error")
+              .forEach((el) => el.classList.remove("error"));
+            document
+              .querySelectorAll(".validation-message")
+              .forEach((el) => el.classList.remove("show"));
+
+            // Re-enable submit button after delay
+            setTimeout(() => {
+              submitBtn.disabled = false;
+              submitBtn.textContent = originalText;
+            }, 2000);
+          } else {
+            alert("❌ Submission error: Please try again later.");
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+          }
+        } catch (error) {
+          alert(
+            "❌ Failed to submit booking. Please check your internet connection and try again."
+          );
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+        }
+      });
+
+    // Close popup when clicking outside
+    document
+      .getElementById("successPopup")
+      .addEventListener("click", function (e) {
+        if (e.target === this) {
+          closePopup();
+        }
+      });
   </script>
 </body>
+
 </html>
-
-
-
-
-
-
-
